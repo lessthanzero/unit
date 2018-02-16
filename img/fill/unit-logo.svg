@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="24px" viewBox="0 0 20 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>element/fill/unit-logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M331,103.57377 L331,90 L351,90 L351,103.57377 C351,109.332018 346.522847,114 341,114 C335.477153,114 331,109.332018 331,103.57377 Z" id="path-1"></path>
+    </defs>
+    <g id="Final/iPhone-8/landing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-331.000000, -90.000000)">
+        <g id="element/fill/unit-logo">
+            <use fill="#F4F4F4" fill-rule="evenodd" xlink:href="#path-1"></use>
+            <path stroke="#F4F4F4" stroke-width="1" d="M350.5,90.5 L331.5,90.5 L331.5,103.57377 C331.5,109.060437 335.758072,113.5 341,113.5 C346.241928,113.5 350.5,109.060437 350.5,103.57377 L350.5,90.5 Z"></path>
+        </g>
+    </g>
+</svg>

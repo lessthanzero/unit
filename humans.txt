@@ -1,0 +1,12 @@
+/* SITE */
+  Standards: HTML5, CSS3
+  Components: 
+  Software: Sketch.app, Sublime Text 3, Coda 2, Git, Gulp, npm, node.js, yarn
+  Last update: 2018/02
+  
+/* TEAM */
+  Author: Alexander Katin
+  Twitter: alexanderkatin
+  Location: Moscow, Russia
+
+/* THANKS */

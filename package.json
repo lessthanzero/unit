@@ -1,0 +1,17 @@
+{
+  "name": "unit",
+  "version": "1.0.0",
+  "description": "Unit, currency converter for the modern web",
+  "main": "index.js",
+  "author": "Alexander Katin",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "browser-sync": "^2.23.6",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-babel": "^7.0.1",
+    "gulp-stylus": "^2.7.0"
+  }
+}
