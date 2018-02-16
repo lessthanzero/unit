@@ -1,6 +1,8 @@
 dark-color = #0E0E0E
 light-color = #F4F4F4
 mobile-padding = 1.5rem
+noto-light = 'Noto Sans Light', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif
+noto-regular = 'Noto Sans Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif
 
 @font-face
   font-family: 'Noto Sans Light'
@@ -14,13 +16,11 @@ mobile-padding = 1.5rem
   font-style: normal
   src: url('../fonts/NotoSans-Regular.ttf') format('truetype');
 
-noto-light = 'Noto Sans Light', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif
-noto-regular = 'Noto Sans Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif
-
 *
   transition: all .33s ease-out
 
 body
+  height: 100vh
   background: dark-color
   font-family: noto-light
   font-weight: normal
@@ -38,6 +38,9 @@ _:-ms-input-placeholder, :root main
   
 header, footer, .content
   padding: 0 mobile-padding
+  
+.content.landing
+  height: 50vh
   
 header
   height: 4rem
@@ -126,7 +129,8 @@ picture
   &:nth-child(2n+1)
     margin-bottom: 2.5rem
   &.hand
-    display: block
+    background: none
+    height: 50vh
   
 img
   width: 100%

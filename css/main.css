@@ -16,6 +16,7 @@
   transition: all 0.33s ease-out;
 }
 body {
+  height: 100vh;
   background: #0e0e0e;
   font-family: 'Noto Sans Light', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   font-weight: normal;
@@ -36,6 +37,9 @@ header,
 footer,
 .content {
   padding: 0 1.5rem;
+}
+.content.landing {
+  height: 50vh;
 }
 header {
   height: 4rem;
@@ -155,7 +159,8 @@ picture:nth-child(2n+1) {
   margin-bottom: 2.5rem;
 }
 picture.hand {
-  display: block;
+  background: none;
+  height: 50vh;
 }
 img {
   width: 100%;
