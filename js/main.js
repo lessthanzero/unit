@@ -11,7 +11,19 @@ unitConverter.switchKeypads = function () {
 	});
 };
 
+unitConverter.selectCurrency = function () {
+	$('.key').not('.inactive').click(function () {
+		var selectedCurrency = $(this).text();
+		var button = $(this).parent().parent().find('button');
+		var buttonCurrency = $(button).text();
+
+		$(button).text(selectedCurrency);
+		$(this).text(buttonCurrency);
+	});
+};
+
 $(document).ready(function () {
 
 	unitConverter.switchKeypads();
+	unitConverter.selectCurrency();
 });

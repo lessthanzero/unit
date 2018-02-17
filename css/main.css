@@ -288,6 +288,9 @@ footer > p {
   text-align: center;
   line-height: 4rem;
 }
+.keypad .key.inactive {
+  color: #252525;
+}
 .keypad .key:nth-child(1),
 .keypad .key:nth-child(4) {
   border-left: 1px solid #252525;
