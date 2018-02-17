@@ -47,7 +47,7 @@
 	<link rel="stylesheet" href="../css/main.css">
 	
 </head>
-<body>
+<body class="app">
 
 	<div class="wrapper">
 		<header>
@@ -57,14 +57,39 @@
 			</div>
 		</header>
 	
-		<div class="input">
-			<input type="text" placeholder="What do you want to convert?">
-			<button>GBP</button>
-		</div>
-		
-		<div class="output">
-			<input type="text" placeholder="What do you want to convert?">
-			<button>USD</button>
+		<div class="content">
+			<div class="input-container">
+				<div class="input-container__field">
+					<input type="text" pattern="[0-9]*" placeholder="What do you want to convert?">
+					<button>RUB</button>
+				</div>
+				<div class="keypad">
+					<div class="key">USD</div>
+					<div class="key">EUR</div>
+					<div class="key">GBP</div>
+					<div class="key">JPY</div>
+					<div class="key">RMB</div>
+					<div class="key period">.</div>
+				</div>
+			</div>
+				
+			<div class="output-container">
+				<div class="output-container__field">
+					<input type="text" placeholder="What do you want to convert?">
+					<button>USD</button>
+				</div>
+				<div class="output-container__error">
+					<p>Can’t convert. Try to reload</p>
+				</div>
+				<div class="keypad">
+					<div class="key">RUB</div>
+					<div class="key">EUR</div>
+					<div class="key">GBP</div>
+					<div class="key">JPY</div>
+					<div class="key">RMB</div>
+					<div class="key period">.</div>
+				</div>
+			</div>
 		</div>
 	</div>
 
