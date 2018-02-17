@@ -18,9 +18,13 @@ noto-regular = 'Noto Sans Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI
 
 *
   transition: all .33s ease-out
+  
+html, body
+  height: 100%
 
 body
-  height: 100vh
+  display: flex
+  flex-direction: column
   background: dark-color
   font-family: noto-light
   font-weight: normal
@@ -29,6 +33,9 @@ body
   color: light-color
   margin: 0
   padding: 0
+  
+.wrapper
+  flex: 1 0 auto
 
 _:-ms-input-placeholder, :root main
   display: block
@@ -138,4 +145,7 @@ img
   object-fit: cover
   
 footer
-  margin: 4rem 0 1.5rem
+  flex-shrink: 0
+  padding: 4rem mobile-padding mobile-padding
+  & > p
+    margin: 0
