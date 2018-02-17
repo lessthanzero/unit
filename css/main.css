@@ -197,9 +197,9 @@ footer > p {
   margin: 0;
 }
 .landing {
-  height: 40vh;
+  height: 50vh;
 }
 .landing ~ footer {
-  height: 50vh;
+  height: 100vh;
   padding: 0;
 }
