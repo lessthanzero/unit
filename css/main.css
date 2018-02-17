@@ -217,6 +217,16 @@ footer > p {
 .app .content {
   padding: 0;
 }
+.input-container__field,
+.output-container__field {
+  height: -webkit-calc((100vh - 8rem) / 4);
+  height: calc((100vh - 8rem) / 4);
+  max-height: 4rem;
+  border-left: none;
+  border-right: none;
+  border-top: 1px solid #252525;
+  border-bottom: 1px solid #252525;
+}
 .input-container {
   font-size: 2rem;
   line-height: 1.34375rem;
@@ -233,20 +243,11 @@ footer > p {
   position: relative;
 }
 .output-container .output-container__field {
+  border-top: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-.input-container__field,
-.output-container__field {
-  height: -webkit-calc((100vh - 8rem) / 4);
-  height: calc((100vh - 8rem) / 4);
-  max-height: 4rem;
-  border-left: none;
-  border-right: none;
-  border-top: 1px solid #252525;
-  border-bottom: 1px solid #252525;
 }
 .keypad {
   display: -webkit-box;
@@ -271,10 +272,17 @@ footer > p {
   height: -webkit-calc((100vh - 8rem) / 4);
   height: calc((100vh - 8rem) / 4);
   max-height: 4rem;
-  border: 1px solid #252525;
+  border-top: none;
+  border-left: none;
+  border-right: 1px solid #252525;
+  border-bottom: 1px solid #252525;
   border-collapse: collapse;
   text-align: center;
   line-height: 4rem;
+}
+.keypad .key:nth-child(1),
+.keypad .key:nth-child(4) {
+  border-left: 1px solid #252525;
 }
 input,
 button,
@@ -290,8 +298,8 @@ button,
 input,
 .result {
   height: 100%;
-  width: -webkit-calc(100vw - 100vw / 3);
-  width: calc(100vw - 100vw / 3);
+  width: -webkit-calc((2 / 3) * 100vw - 1px);
+  width: calc((2 / 3) * 100vw - 1px);
   border: none;
   outline: none;
   line-height: 4rem;
@@ -300,8 +308,8 @@ input,
 }
 button {
   height: 100%;
-  width: -webkit-calc(100vw / 3);
-  width: calc(100vw / 3);
+  width: -webkit-calc(100vw / 3 + 1px);
+  width: calc(100vw / 3 + 1px);
   border-left: 1px solid #252525;
   border-right: none;
   border-top: none;

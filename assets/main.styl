@@ -171,6 +171,15 @@ footer
 .app .content
   padding: 0
   
+
+.input-container__field, .output-container__field
+  height: calc( (100vh - 8rem)/4 )
+  max-height: 4rem
+  border-left: none
+  border-right: none
+  border-top: 1px solid darken(light-color, 85%)
+  border-bottom: 1px solid darken(light-color, 85%)
+    
 .input-container
   font-size: 2rem
   line-height: 1.34375rem
@@ -182,16 +191,9 @@ footer
   line-height: 1.34375rem
   position: relative
   .output-container__field
+    border-top: none
     display: flex
 
-.input-container__field, .output-container__field
-    height: calc( (100vh - 8rem)/4 )
-    max-height: 4rem
-    border-left: none
-    border-right: none
-    border-top: 1px solid darken(light-color, 85%)
-    border-bottom: 1px solid darken(light-color, 85%)
-    
 .keypad
   display: flex
   flex-wrap: wrap
@@ -204,10 +206,16 @@ footer
     width: calc(100vw/3)
     height: calc( (100vh - 8rem)/4 )
     max-height: 4rem
-    border: 1px solid darken(light-color, 85%)
+    border-top: none
+    border-left: none
+    border-right: 1px solid darken(light-color, 85%)
+    border-bottom: 1px solid darken(light-color, 85%)
     border-collapse: collapse
     text-align: center
     line-height: 4rem
+    &:nth-child(1), &:nth-child(4)
+      border-left: 1px solid darken(light-color, 85%)
+      
 
 input, button, .result
   background: dark-color
@@ -220,7 +228,7 @@ input, button, .result
     
 input, .result
   height: 100%
-  width: calc(100vw - 100vw/3)
+  width: calc((2/3)*100vw - 1px)
   border: none
   outline: none
   line-height: 4rem
@@ -229,7 +237,7 @@ input, .result
   
 button
   height: 100%
-  width: calc(100vw/3)
+  width: calc(100vw/3 + 1px)
   border-left: 1px solid darken(light-color, 85%)
   border-right: none
   border-top: none
