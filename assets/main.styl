@@ -1,6 +1,7 @@
 dark-color = #0E0E0E
 light-color = #F4F4F4
 mobile-padding = 1.5rem
+desktop-padding = 10vw
 noto-light = 'Noto Sans Light', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif
 noto-regular = 'Noto Sans Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif
 
@@ -43,7 +44,7 @@ _:-ms-input-placeholder, :root main
 .bolder
   font-family: noto-regular
   
-header, footer, .content
+header, .content
   padding: 0 mobile-padding
   
 header
@@ -136,13 +137,15 @@ picture
     height: 100%
     background: none
     margin-bottom: 0
-  
+
 img
   width: 100%
   height: 100%
-  object-fit: contain
+  object-fit: cover
   .hand > &
-    margin-top: 2vh
+    margin: 0
+    padding: 0
+    object-position: 0 40%
   
 footer
   flex-shrink: 0.5
@@ -150,10 +153,56 @@ footer
   & > p
     margin: 0
     
+
 .landing
+  display: flex
+& > .wrapper
   height: 50vh
     
-.landing ~ footer
+.landing > footer
   height: 100vh
   padding: 0
+  
+/* Media Queries */
+
+@media (max-width: 20rem)
+
+  .hand
+    object-fit: cover
+    & > img  
+      object-position: 55% 0
+
+  .pseudo-button
+    font-size: 0.75rem
+    
+@media (max-height: 34rem)
+  // trying to fix Opera Mini
+  .hand > img
+    object-position: 55% -250%
+
+@media (min-width: 64rem)
+  
+  footer
+    padding: 4rem desktop-padding 1.5rem
+  
+  .landing
+    flex-direction: row
+    justify-content: space-evenly  
+    & .wrapper
+      flex: 0 1 auto
+      height: 100vh
+      padding: 0
+
+  .landing footer
+    padding: 0
+
+  .landing header, .landing .content
+    padding: 0 5vw
+  
+  header, .content
+    padding: 0 desktop-padding
+    
+  .hand > img
+    object-position: 0 33%
+
 

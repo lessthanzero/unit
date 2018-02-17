@@ -52,7 +52,6 @@ _:-ms-input-placeholder,
   font-family: 'Noto Sans Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 header,
-footer,
 .content {
   padding: 0 1.5rem;
 }
@@ -181,11 +180,14 @@ picture.hand {
 img {
   width: 100%;
   height: 100%;
-  -o-object-fit: contain;
-  object-fit: contain;
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 .hand > img {
-  margin-top: 2vh;
+  margin: 0;
+  padding: 0;
+  -o-object-position: 0 40%;
+  object-position: 0 40%;
 }
 footer {
   -webkit-flex-shrink: 0.5;
@@ -197,9 +199,74 @@ footer > p {
   margin: 0;
 }
 .landing {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.wrapper {
   height: 50vh;
 }
-.landing ~ footer {
+.landing > footer {
   height: 100vh;
   padding: 0;
+}
+/* Media Queries */
+@media (max-width: 20rem) {
+  .hand {
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+  .hand > img {
+    -o-object-position: 55% 0;
+    object-position: 55% 0;
+  }
+  .pseudo-button {
+    font-size: 0.75rem;
+  }
+}
+@media (max-height: 34rem) {
+  .hand > img {
+    -o-object-position: 55% -250%;
+    object-position: 55% -250%;
+  }
+}
+@media (min-width: 64rem) {
+  footer {
+    padding: 4rem 10vw 1.5rem;
+  }
+  .landing {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: space-evenly;
+    -webkit-justify-content: space-evenly;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
+  }
+  .landing .wrapper {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    height: 100vh;
+    padding: 0;
+  }
+  .landing footer {
+    padding: 0;
+  }
+  .landing header,
+  .landing .content {
+    padding: 0 5vw;
+  }
+  header,
+  .content {
+    padding: 0 10vw;
+  }
+  .hand > img {
+    -o-object-position: 0 33%;
+    object-position: 0 33%;
+  }
 }
