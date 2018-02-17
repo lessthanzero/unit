@@ -129,7 +129,7 @@ a {
   color: #f4f4f4;
 }
 a:hover {
-  color: #b7b7b7;
+  color: #7a7a7a;
 }
 a.pseudo-button {
   border: 1px solid #f4f4f4;
@@ -146,7 +146,12 @@ a.pseudo-button:hover {
   color: #0e0e0e;
 }
 a.pseudo-button.secondary {
-  opacity: 0.5;
+  color: #7a7a7a;
+  border-color: #7a7a7a;
+}
+a.pseudo-button.secondary:hover {
+  background: #7a7a7a;
+  color: #0e0e0e;
 }
 .pseudo-button__holder {
   margin: 1.5rem 0 0;
