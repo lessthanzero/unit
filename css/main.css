@@ -322,6 +322,7 @@ button {
   border-right: none;
   border-top: none;
   border-bottom: none;
+  outline: none;
 }
 .output-container__error {
   width: 100%;

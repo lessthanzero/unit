@@ -61,9 +61,9 @@
 			<div class="input-container">
 				<div class="input-container__field">
 					<input type="number" pattern="[0-9]*" placeholder="0">
-					<button>RUB</button>
+					<button class="switch-input">RUB</button>
 				</div>
-				<div class="keypad">
+				<div class="keypad hidden">
 					<div class="key">USD</div>
 					<div class="key">EUR</div>
 					<div class="key">GBP</div>
@@ -76,12 +76,12 @@
 			<div class="output-container">
 				<div class="output-container__field">
 					<div class="result">0</div>
-					<button>USD</button>
+					<button class="switch-output">USD</button>
 				</div>
 				<div class="output-container__error hidden">
 					<p>Can’t convert. Try to reload</p>
 				</div>
-				<div class="keypad">
+				<div class="keypad hidden">
 					<div class="key">RUB</div>
 					<div class="key">EUR</div>
 					<div class="key">GBP</div>
@@ -93,6 +93,8 @@
 		</div>
 	</div>
 
+	<script src="../js/jquery-3.3.1.slim.min.js"></script>
+	<!-- <script src="../js/money.min.js"></script> -->
 	<script src="../js/main.js"></script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->

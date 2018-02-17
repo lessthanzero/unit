@@ -30,6 +30,7 @@ gulp.task('serve', ['styles'], function() {
   });
 
   gulp.watch("./assets/*.styl", ['styles']);
+  gulp.watch("./assets/*.js", ['babel']);
   gulp.watch("./*.html").on('change', browserSync.reload);
 
 });
