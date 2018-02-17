@@ -6,11 +6,7 @@
     <defs></defs>
     <g id="Final/iPhone-8/default" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-24.000000, -90.000000)">
         <g id="Group-4" transform="translate(24.000000, 90.000000)" stroke="#F4F4F4">
-            <g id="element/unit-logo">
-                <g id="element/outline/unit-logo">
-                    <path d="M19.5,0.5 L0.5,0.5 L0.5,13.5737705 C0.5,19.0604368 4.75807163,23.5 10,23.5 C15.2419284,23.5 19.5,19.0604368 19.5,13.5737705 L19.5,0.5 Z"></path>
-                </g>
-            </g>
+            <path d="M0.5,0.5 C0.5,4.34240604 0.5,4.56007551 0.5,10 C0.5,17.9272262 3.53969479,23.5 10,23.5 C16.4603052,23.5 19.5,17.9272262 19.5,10 C19.5,4.56007551 19.5,4.34240604 19.5,0.5 L0.5,0.5 Z" id="element/outline/unit-logo"></path>
         </g>
     </g>
 </svg>
