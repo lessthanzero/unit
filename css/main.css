@@ -287,6 +287,10 @@ footer > p {
   border-collapse: collapse;
   text-align: center;
   line-height: 4rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .keypad .key.inactive {
   color: #252525;
@@ -326,6 +330,10 @@ button {
   border-top: none;
   border-bottom: none;
   outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .output-container__error {
   width: 100%;
