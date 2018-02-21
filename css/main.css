@@ -321,6 +321,11 @@ input,
   padding: 0 1rem;
   text-align: right;
 }
+.result div {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 button {
   height: 100%;
   width: -webkit-calc(100vw / 3 + 1px);
