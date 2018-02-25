@@ -102,13 +102,12 @@ unitConverter.handleInput = function(min, max) {
 
 			else								// Disallow non-numeric
 				return false; 
-
-
 		}
 
 	});
 
 	$('#numericinput').keyup(function(event) {
+		console.log('Caret at: ', event.target.selectionStart);
 		var currentValue = $(this).val();
 		var result = 0;
 		if (!isNaN(currentValue) && currentValue != '') {
@@ -123,17 +122,8 @@ unitConverter.handleInput = function(min, max) {
 	});
 
 	$('.period').click(function() {
-		console.log('simpress');
-		var e = jQuery.Event('keydown');
-		e.which = 190;
-		e.keycode = 190;
-		$('#numericinput').focus().trigger(e);
-		// simulateKeyPress('.');
+		$('#numericinput').sendkeys('.');
 	});
-
-	function simulateKeyPress(character) {
-	  // jQuery.event.trigger({ type : 'keypress', which : character.charCodeAt(0) });
-	}
 
 }
 
@@ -146,32 +136,6 @@ unitConverter.fitNumbers = function(element) {
 	fontSize = (tempSize > 32 ? 32 : tempSize); 
 	
 	$(element).css('font-size', fontSize);
-}
-
-// Private function for selecting cursor position. Makes IE play nice.
-// http://stackoverflow.com/questions/263743/how-to-get-caret-position-in-textarea
-unitConverter.getCaret = function(element) {
-	if (element.selectionStart) {
-		return element.selectionStart; 
-	}
-
-	else if (document.selection) //IE specific
-	{ 
-		element.focus(); 
-
-		var r = document.selection.createRange(); 
-		if (r == null) 
-			return 0; 
-
-		var re = element.createTextRange(), 
-		rc = re.duplicate(); 
-		re.moveToBookmark(r.getBookmark()); 
-		rc.setEndPoint('EndToStart', re); 
-		return rc.text.length; 
-	}  
-
-	return 0;
-
 }
 
 $(document).ready(function() {
