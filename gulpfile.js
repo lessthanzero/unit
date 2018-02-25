@@ -5,7 +5,7 @@ var browserSync = require('browser-sync').create();
 var babel = require('gulp-babel');
 
 gulp.task('styles', function() {
-  return gulp.src('./assets/*.styl')
+  return gulp.src(['./assets/*.styl', './assets/*.css'])
     .pipe(stylus())
     .pipe(autoprefixer({
       browsers: ['last 30 versions'],

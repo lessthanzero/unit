@@ -366,6 +366,13 @@ button {
   color: #f4f4f4;
   margin: 0;
 }
+.likely {
+  width: 7.25rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
 /* Media Queries */
 @media (max-width: 20rem) {
   .hand {
