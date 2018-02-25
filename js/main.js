@@ -53,7 +53,7 @@ unitConverter.handleErrors = function (mode) {
 		} else {
 			unknownError = 'Wrong input';
 		}
-		$('.result div').text('0');
+		$('.result').text('0');
 		$('.output-container__error p').text('').text(unknownError);
 		$('.output-container__error').removeClass('hidden');
 	}
@@ -102,8 +102,9 @@ unitConverter.handleInput = function (min, max) {
 		} else {
 			result = 0;
 		}
-		fitty('.result div', { maxSize: 32 });
-		$('.result div').text(result);
+
+		$('.result').text(result);
+		unitConverter.fitNumbers('.result');
 	});
 
 	$('.period').click(function () {
@@ -118,6 +119,17 @@ unitConverter.handleInput = function (min, max) {
 	function simulateKeyPress(character) {
 		// jQuery.event.trigger({ type : 'keypress', which : character.charCodeAt(0) });
 	}
+};
+
+unitConverter.fitNumbers = function (element) {
+	var w = $(element).width();
+	var symbolsCount = $(element).text().length;
+	var fontSize = parseInt($(element).css('font-size'), 10);
+
+	var tempSize = 1.75 * w / symbolsCount;
+	fontSize = tempSize > 32 ? 32 : tempSize;
+
+	$(element).css('font-size', fontSize);
 };
 
 // Private function for selecting cursor position. Makes IE play nice.
