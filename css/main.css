@@ -366,12 +366,16 @@ button {
   color: #f4f4f4;
   margin: 0;
 }
-.likely {
+.landing .likely {
   width: 7.25rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
 }
 /* Media Queries */
 @media (max-width: 20rem) {
