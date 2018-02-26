@@ -1,24 +1,5 @@
 var unitConverter = {};
 
-// $.getJSON(
-// 	// NB: using Open Exchange Rates here, but you can use any source!
-//     'https://api.fixer.io/latest',
-//     function(data) {
-//         // Check money.js has finished loading:
-//         if ( typeof fx !== "undefined" && fx.rates ) {
-//             fx.rates = data.rates;
-//             fx.base = data.base;
-//             console.log(fx.rates);
-//         } else {
-//             // If not, apply to fxSetup global:
-//             var fxSetup = {
-//                 rates : data.rates,
-//                 base : data.base
-//             }
-//         }
-//     }
-// );
-
 unitConverter.switchKeypads = function() {
 	$('.switch-input, .switch-output').click(
 		function() {
@@ -146,7 +127,25 @@ unitConverter.handleInput = function(min, max) {
 }
 
 unitConverter.handleRates = function() {
-
+	$.getJSON(
+		// NB: using Open Exchange Rates here, but you can use any source!
+	    'https://api.fixer.io/latest',
+	    function(data) {
+	        // Check money.js has finished loading:
+	        if ( typeof fx !== "undefined" && fx.rates ) {
+	            fx.rates = data.rates;
+	            fx.base = data.base;
+	            console.log(data.rates);
+	        } else {
+	            // If not, apply to fxSetup global:
+	            var fxSetup = {
+	                rates : data.rates,
+	                base : data.base
+	            }
+	            console.log(fxSetup);
+	        }
+	    }
+	);
 }
 
 unitConverter.fitNumbers = function(element) {
@@ -161,6 +160,7 @@ unitConverter.fitNumbers = function(element) {
 }
 
 $(document).ready(function() {
+	unitConverter.handleRates();
 	unitConverter.handleInput(0, 999999999.99);
 	unitConverter.switchKeypads();
 	unitConverter.selectCurrency();
