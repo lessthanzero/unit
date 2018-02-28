@@ -1,4 +1,14 @@
 var unitConverter = {};
+unitConverter.fromCurrency = 'RUB';
+unitConverter.toCurrency = 'USD';
+
+fx.settings = {
+	from : "RUB",
+	to : "USD"
+};
+fx.rates = {};
+fx.base = 'EUR';
+var result = 0;
 
 unitConverter.switchKeypads = function() {
 	$('.switch-input, .switch-output').click(
@@ -12,40 +22,49 @@ unitConverter.switchKeypads = function() {
 }
 
 unitConverter.selectCurrency = function() {
-	$('.key').not('.period').click(
-		function() {
+	$('.key').not('.period').click(function() {
 			
-			if ( !$(this).hasClass('inactive') ) {
+		if ( !$(this).hasClass('inactive') ) {
 
-				var selectedCurrency = $(this).text();
-				var button = $(this).parent().parent().find('button');
-				var buttonCurrency = $(button).text();
-				//take label from key 
-				//and put it in an input
-				$(button).text(selectedCurrency);
-				//take label from input 
-				//and put it on a key
-				$(this).text(buttonCurrency);
+			var selectedCurrency = $(this).text();
+			var button = $(this).parent().parent().find('button');
+			var buttonCurrency = $(button).text();
+			//take label from key 
+			//and put it in an input
+			$(button).text(selectedCurrency);
+			//take label from input 
+			//and put it on a key
+			$(this).text(buttonCurrency);
 
-				$('.key').each(function() {
-					var label = $(this).text();
-					$(this).removeClass('inactive');
-					if (label == selectedCurrency) {
-						$(this).addClass('inactive');
-					}
-				});
-
-				if ($('.switch-input').text() == $('.switch-output').text()) {
-					unitConverter.handleErrors(2);
-				} else {
-					unitConverter.handleErrors(0);
-				}
-
+			if ( $(button).hasClass('switch-input') ) {
+				unitConverter.fromCurrency = buttonCurrency;
+				console.log('1', unitConverter.fromCurrency, unitConverter.toCurrency);
+			} else {
+				unitConverter.toCurrency = buttonCurrency;
+				console.log('2', unitConverter.fromCurrency, unitConverter.toCurrency);
 			}
 
+			$('.key').each(function() {
+				var label = $(this).text();
+				$(this).removeClass('inactive');
+				if (label == selectedCurrency) {
+					$(this).addClass('inactive');
+				}
+			});
+
+			if ($('.switch-input').text() == $('.switch-output').text()) {
+				unitConverter.handleErrors(2);
+			} else {
+				unitConverter.handleErrors(0);
+			}
+
+			var currentValue = $('input').val();
+			console.log('3', unitConverter.fromCurrency, unitConverter.toCurrency);
+			unitConverter.handleValues(currentValue, unitConverter.fromCurrency, unitConverter.toCurrency);
 
 		}
-	);
+
+	});
 }
 
 unitConverter.handleErrors = function(mode) {
@@ -65,7 +84,20 @@ unitConverter.handleErrors = function(mode) {
 }
 
 //Largely based on numericInput.js by Joshua De Leon
-unitConverter.handleInput = function(min, max) {
+unitConverter.handleInput = function(tp, min, max) {
+
+	// Check money.js has finished loading:
+    if ( typeof fx !== "undefined" && fx.rates ) {
+        fx.rates = tp[0];
+        fx.base = tp[1];
+    } else {
+        // If not, apply to fxSetup global:
+        var fxSetup = {
+        	rates: tp[0],
+            base: tp[1]
+        }
+    }
+
 	$('#numericinput').keypress(function(event) {
 		var inputCode = event.which;
 		var currentValue = $(this).val();
@@ -88,8 +120,8 @@ unitConverter.handleInput = function(min, max) {
 
 		if (inputCode > 0 && (inputCode < 48 || inputCode > 57)) {
 
-
-			if (inputCode == 46)	// Conditions for a period (decimal point)
+			// Conditions for a period (decimal point)
+			if (inputCode == 46)
 			{
 				
 				//Disallows more than one decimal point.
@@ -97,10 +129,11 @@ unitConverter.handleInput = function(min, max) {
 					return false; 
 			}
 
-			else if (inputCode == 8 || inputCode == 67 || inputCode == 86) 	// Allows backspace , ctrl+c ,ctrl+v (copy & paste)
+			// Allows backspace , ctrl+c ,ctrl+v (copy & paste)
+			else if (inputCode == 8 || inputCode == 67 || inputCode == 86)
 				return true; 
-
-			else								// Disallow non-numeric
+			// Disallow non-numeric
+			else
 				return false; 
 		}
 
@@ -108,15 +141,7 @@ unitConverter.handleInput = function(min, max) {
 
 	$('#numericinput').keyup(function(event) {
 		var currentValue = $(this).val();
-		var result = 0;
-		if (!isNaN(currentValue) && currentValue != '') {
-			result = parseFloat(currentValue) * 1200;
-		} else {
-			result = 0;
-		}
-		
-		$('.result').text(result);
-		unitConverter.fitNumbers('.result');
+		unitConverter.handleValues(currentValue, unitConverter.fromCurrency, unitConverter.toCurrency);
 
 	});
 
@@ -126,26 +151,29 @@ unitConverter.handleInput = function(min, max) {
 
 }
 
-unitConverter.handleRates = function() {
+unitConverter.handleValues = function(v, fc, tc) {
+	var r = 0;
+	if (!isNaN(v) && v != '') {
+		r = fx.convert(v, {from: fc, to: tc}).toFixed(2);
+	} else {
+		r = 0;
+	}
+	$('.result').text(r);
+	unitConverter.fitNumbers('.result');
+}
+
+unitConverter.getRates = function(caller) {
+	unitConverter.temp = {};
 	$.getJSON(
 		// NB: using Open Exchange Rates here, but you can use any source!
 	    'https://api.fixer.io/latest',
 	    function(data) {
-	        // Check money.js has finished loading:
-	        if ( typeof fx !== "undefined" && fx.rates ) {
-	            fx.rates = data.rates;
-	            fx.base = data.base;
-	            console.log(data.rates);
-	        } else {
-	            // If not, apply to fxSetup global:
-	            var fxSetup = {
-	                rates : data.rates,
-	                base : data.base
-	            }
-	            console.log(fxSetup);
-	        }
+	        
+	        unitConverter.temp = [data.rates, data.base];
+	        caller(unitConverter.temp);
 	    }
 	);
+	
 }
 
 unitConverter.fitNumbers = function(element) {
@@ -160,8 +188,11 @@ unitConverter.fitNumbers = function(element) {
 }
 
 $(document).ready(function() {
-	unitConverter.handleRates();
-	unitConverter.handleInput(0, 999999999.99);
+	unitConverter.getRates(
+		function(temp) {
+			unitConverter.handleInput(temp, 0, 999999999.99)
+		}
+	);
 	unitConverter.switchKeypads();
 	unitConverter.selectCurrency();
 });
