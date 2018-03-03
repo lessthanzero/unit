@@ -57,7 +57,6 @@ unitConverter.selectCurrency = function() {
 			}
 
 			var currentValue = $('input').val();
-			console.log('3', unitConverter.fromCurrency, unitConverter.toCurrency);
 			unitConverter.handleValues(currentValue, unitConverter.fromCurrency, unitConverter.toCurrency);
 
 		}
