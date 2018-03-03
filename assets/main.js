@@ -45,7 +45,7 @@ unitConverter.selectCurrency = function() {
 			$('.key').each(function() {
 				var label = $(this).text();
 				$(this).removeClass('inactive');
-				if (label == selectedCurrency) {
+				if (label == selectedCurrency || label == $('.switch-input').text() || label == $('.switch-output').text()) {
 					$(this).addClass('inactive');
 				}
 			});
