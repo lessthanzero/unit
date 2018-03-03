@@ -6,7 +6,7 @@ Unit comes with _no warranty_ whatsoever, it is an experiment and shouldn’t be
 
 ## Dependencies
 
-Unit is open-source and relies on some other solutions, among them:
+Unit is open-source and relies on some awesome third-party solutions, among them:
 
 1. [Money.js](https://github.com/openexchangerates/money.js)
 2. [Fixer API](http://fixer.io)
