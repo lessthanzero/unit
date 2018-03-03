@@ -36,12 +36,10 @@ unitConverter.selectCurrency = function() {
 			//and put it on a key
 			$(this).text(buttonCurrency);
 
-			if ( $(button).hasClass('switch-input') ) {
-				unitConverter.fromCurrency = buttonCurrency;
-				console.log('1', unitConverter.fromCurrency, unitConverter.toCurrency);
+			if ( $(this).parent().parent().hasClass('input-container') ) {
+				unitConverter.fromCurrency = selectedCurrency;
 			} else {
-				unitConverter.toCurrency = buttonCurrency;
-				console.log('2', unitConverter.fromCurrency, unitConverter.toCurrency);
+				unitConverter.toCurrency = selectedCurrency;
 			}
 
 			$('.key').each(function() {
@@ -172,7 +170,9 @@ unitConverter.getRates = function(caller) {
 	        unitConverter.temp = [data.rates, data.base];
 	        caller(unitConverter.temp);
 	    }
-	);
+	).fail(function() {
+		unitConverter.handleErrors('1');
+	});
 	
 }
 
