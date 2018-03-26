@@ -96,7 +96,7 @@ unitConverter.handleInput = function (tp, min, max) {
 	$('#numericinput').keypress(function (event) {
 		var inputCode = event.which;
 		var currentValue = $(this).val();
-
+		
 		//If the value isn't empty
 		if (currentValue.length > 0) {
 			//Get the float value, even if we're not using floats this will be ok
@@ -114,7 +114,6 @@ unitConverter.handleInput = function (tp, min, max) {
 		}
 
 		if (inputCode > 0 && (inputCode < 48 || inputCode > 57)) {
-
 			// Conditions for a period (decimal point)
 			if (inputCode == 46) {
 
@@ -132,6 +131,7 @@ unitConverter.handleInput = function (tp, min, max) {
 	$('#numericinput').keyup(function (event) {
 		var currentValue = $(this).val();
 		unitConverter.handleValues(currentValue, unitConverter.fromCurrency, unitConverter.toCurrency);
+		// $(this).val(unitConverter.numberWithSpaces(currentValue));
 	});
 
 	$('.period').click(function () {
@@ -146,7 +146,7 @@ unitConverter.handleValues = function (v, fc, tc) {
 	} else {
 		r = 0;
 	}
-	$('.result').text(r);
+	$('.result').text(unitConverter.numberWithSpaces(r));
 	unitConverter.fitNumbers('.result');
 };
 
@@ -162,6 +162,10 @@ unitConverter.getRates = function (caller) {
 		unitConverter.handleErrors('1');
 	});
 };
+
+ unitConverter.numberWithSpaces = function (x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '\u0020');
+}
 
 unitConverter.fitNumbers = function (element) {
 	var w = $(element).width();
