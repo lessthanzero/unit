@@ -3,6 +3,8 @@
 var unitConverter = {};
 unitConverter.fromCurrency = 'RUB';
 unitConverter.toCurrency = 'USD';
+unitConverter.updated = new Date();
+unitConverter.monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 fx.settings = {
 	from: "RUB",
@@ -81,6 +83,8 @@ unitConverter.handleErrors = function (mode) {
 //Largely based on numericInput.js by Joshua De Leon
 unitConverter.handleInput = function (tp, min, max) {
 
+
+
 	// Check money.js has finished loading:
 	if (typeof fx !== "undefined" && fx.rates) {
 		fx.rates = tp[0];
@@ -155,8 +159,8 @@ unitConverter.getRates = function (caller) {
 	$.getJSON(
 	// NB: using Open Exchange Rates here, but you can use any source!
 	'https://api.fixer.io/latest', function (data) {
-
 		unitConverter.temp = [data.rates, data.base];
+		$('.date').text(unitConverter.monthNames[unitConverter.updated.getMonth()] + ' ' + unitConverter.updated.getDate() + ' ' + unitConverter.updated.getHours() + ':' + (parseInt(unitConverter.updated.getMinutes()) < 10 ? '0'+unitConverter.updated.getMinutes() : unitConverter.updated.getMinutes())); //show the actual date for rates
 		caller(unitConverter.temp);
 	}).fail(function () {
 		unitConverter.handleErrors('1');

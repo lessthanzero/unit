@@ -90,14 +90,23 @@ header > .menu > h1 {
   line-height: 1.5rem;
 }
 header > .menu > .unit_logo {
-  width: 1.25rem;
+  width: auto;
+  font-size: 0.75rem;
+  color: #f4f4f4;
+  border: 1px solid #252525;
+  -webkit-border-radius: 0.375rem;
+  border-radius: 0.375rem;
+  padding: 0 0.5rem;
   height: 100%;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background: url("../img/outline/unit-logo.svg");
+  background: none;
+  line-height: 1.5rem;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  text-decoration: none;
 }
 header > .menu > .unit_logo.filled {
-  background: url("../img/fill/unit-logo.svg");
+  color: #0e0e0e;
+  background: #f4f4f4;
 }
 header > .menu > .unit_setup {
   width: 1.5rem;
