@@ -104,10 +104,10 @@ header > .menu > .unit_setup {
   height: 100%;
   background-position: center center;
   background-repeat: no-repeat;
-  background: url("../img/outline/gear.svg");
+  background: url("../img/outline/howto.svg");
 }
 header > .menu > .unit_setup.filled {
-  background: url("../img/fill/gear.svg");
+  background: url("../img/fill/howto.svg");
 }
 h1 {
   margin-bottom: 1.5rem;
