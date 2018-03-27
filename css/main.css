@@ -90,6 +90,7 @@ header > .menu > h1 {
   line-height: 1.5rem;
 }
 header > .menu > .unit_logo {
+  position: relative;
   width: auto;
   font-size: 0.75rem;
   color: #f4f4f4;
@@ -107,6 +108,21 @@ header > .menu > .unit_logo {
 header > .menu > .unit_logo.filled {
   color: #0e0e0e;
   background: #f4f4f4;
+  padding: 0 0.5rem 0 1.25rem;
+}
+header > .menu > .unit_logo.filled:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0.5rem;
+  left: 0.4rem;
+  -webkit-border-radius: 0.25rem;
+  border-radius: 0.25rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #11998e;
+  -webkit-animation: pulse 2s infinite;
+  animation: pulse 2s infinite;
 }
 header > .menu > .unit_setup {
   width: 1.5rem;
@@ -117,6 +133,17 @@ header > .menu > .unit_setup {
 }
 header > .menu > .unit_setup.filled {
   background: url("../img/fill/howto.svg");
+}
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(17,153,142,0.4);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 0.1875rem rgba(17,153,142,0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(17,153,142,0);
+  }
 }
 h1 {
   margin-bottom: 1.5rem;
@@ -443,5 +470,33 @@ button {
   .hand > img {
     -o-object-position: 0 33%;
     object-position: 0 33%;
+  }
+}
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(17,153,142,0.4);
+    box-shadow: 0 0 0 0 rgba(17,153,142,0.4);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 0.1875rem rgba(17,153,142,0);
+    box-shadow: 0 0 0 0.1875rem rgba(17,153,142,0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(17,153,142,0);
+    box-shadow: 0 0 0 0 rgba(17,153,142,0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(17,153,142,0.4);
+    box-shadow: 0 0 0 0 rgba(17,153,142,0.4);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 0.1875rem rgba(17,153,142,0);
+    box-shadow: 0 0 0 0.1875rem rgba(17,153,142,0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(17,153,142,0);
+    box-shadow: 0 0 0 0 rgba(17,153,142,0);
   }
 }
