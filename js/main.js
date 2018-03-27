@@ -5,6 +5,7 @@ unitConverter.fromCurrency = 'RUB';
 unitConverter.toCurrency = 'USD';
 unitConverter.updated = new Date();
 unitConverter.monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+unitConverter.hideKeypad = false;
 
 fx.settings = {
 	from: "RUB",
@@ -20,6 +21,7 @@ unitConverter.switchKeypads = function () {
 		var siblingKeypad = $('.keypad').not(keypad);
 		$(keypad).toggleClass('hidden');
 		$(siblingKeypad).addClass('hidden');
+		unitConverter.hideKeypad = false;
 	});
 };
 
@@ -45,6 +47,10 @@ unitConverter.selectCurrency = function () {
 			}
 
 			$('.key').each(function () {
+				if (!unitConverter.hideKeypad) {
+					$('.keypad').addClass('hidden');
+					unitConverter.hideKeypad = !unitConverter.hideKeypad;
+				}
 				var label = $(this).text();
 				$(this).removeClass('inactive');
 				if (label == selectedCurrency || label == $('.switch-input').text() || label == $('.switch-output').text()) {
