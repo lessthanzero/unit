@@ -3,6 +3,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var stylus = require('gulp-stylus');
 var browserSync = require('browser-sync').create();
 var babel = require('gulp-babel');
+var minify = require('gulp-minify');
 
 gulp.task('styles', function() {
   return gulp.src(['./assets/*.styl', './assets/*.css'])
@@ -12,6 +13,18 @@ gulp.task('styles', function() {
       cascade: false
     }))
     .pipe(gulp.dest('./css/'));
+});
+
+gulp.task('compress', function() {
+  gulp.src('assets/*.js')
+  .pipe(minify({
+    ext: {
+      src: '.js',
+      min: '.min.js'
+    },
+    ignoreFiles: ['*.min.js', '-min.js'],
+  }))
+  .pipe(gulp.dest('js'))
 });
 
 gulp.task('babel', function() {
@@ -35,4 +48,4 @@ gulp.task('serve', ['styles'], function() {
 
 });
 
-gulp.task('default', ['serve', 'styles']);
+gulp.task('default', ['serve', 'styles', 'compress']);
