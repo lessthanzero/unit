@@ -141,7 +141,6 @@ unitConverter.handleInput = function (tp, min, max) {
 	$('#numericinput').keyup(function (event) {
 		var currentValue = $(this).val();
 		unitConverter.handleValues(currentValue, unitConverter.fromCurrency, unitConverter.toCurrency);
-		// $(this).val(unitConverter.numberWithSpaces(currentValue));
 	});
 
 	$('.period').click(function () {
@@ -163,7 +162,6 @@ unitConverter.handleValues = function (v, fc, tc) {
 unitConverter.getRates = function (caller) {
 	unitConverter.temp = {};
 	$.getJSON(
-	// NB: using Open Exchange Rates here, but you can use any source!
 	'https://api.fixer.io/latest', function (data) {
 		unitConverter.temp = [data.rates, data.base];
 		$('.date').text(unitConverter.monthNames[unitConverter.updated.getMonth()] + ' ' + unitConverter.updated.getDate() + ' ' + unitConverter.updated.getHours() + ':' + (parseInt(unitConverter.updated.getMinutes()) < 10 ? '0'+unitConverter.updated.getMinutes() : unitConverter.updated.getMinutes())); //show the actual date for rates
