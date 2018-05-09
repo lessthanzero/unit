@@ -83,12 +83,10 @@ unitConverter.handleErrors = function(mode) {
 //Largely based on numericInput.js by Joshua De Leon
 unitConverter.handleInput = function(tp, min, max) {
 
-	// Check money.js has finished loading:
     if ( typeof fx !== "undefined" && fx.rates ) {
         fx.rates = tp[0];
         fx.base = tp[1];
     } else {
-        // If not, apply to fxSetup global:
         var fxSetup = {
         	rates: tp[0],
             base: tp[1]
@@ -160,9 +158,9 @@ unitConverter.handleValues = function(v, fc, tc) {
 }
 
 unitConverter.getRates = function(caller) {
+	console.log('Hi');
 	unitConverter.temp = {};
 	$.getJSON(
-		// NB: using Open Exchange Rates here, but you can use any source!
 	    'https://api.fixer.io/latest',
 	    function(data) {
 	        

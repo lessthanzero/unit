@@ -3,9 +3,6 @@
 var unitConverter = {};
 unitConverter.fromCurrency = 'RUB';
 unitConverter.toCurrency = 'USD';
-unitConverter.updated = new Date();
-unitConverter.monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-unitConverter.hideKeypad = false;
 
 fx.settings = {
 	from: "RUB",
@@ -21,7 +18,6 @@ unitConverter.switchKeypads = function () {
 		var siblingKeypad = $('.keypad').not(keypad);
 		$(keypad).toggleClass('hidden');
 		$(siblingKeypad).addClass('hidden');
-		unitConverter.hideKeypad = false;
 	});
 };
 
@@ -47,10 +43,6 @@ unitConverter.selectCurrency = function () {
 			}
 
 			$('.key').each(function () {
-				if (!unitConverter.hideKeypad) {
-					$('.keypad').addClass('hidden');
-					unitConverter.hideKeypad = !unitConverter.hideKeypad;
-				}
 				var label = $(this).text();
 				$(this).removeClass('inactive');
 				if (label == selectedCurrency || label == $('.switch-input').text() || label == $('.switch-output').text()) {
@@ -89,14 +81,10 @@ unitConverter.handleErrors = function (mode) {
 //Largely based on numericInput.js by Joshua De Leon
 unitConverter.handleInput = function (tp, min, max) {
 
-
-
-	// Check money.js has finished loading:
 	if (typeof fx !== "undefined" && fx.rates) {
 		fx.rates = tp[0];
 		fx.base = tp[1];
 	} else {
-		// If not, apply to fxSetup global:
 		var fxSetup = {
 			rates: tp[0],
 			base: tp[1]
@@ -106,7 +94,7 @@ unitConverter.handleInput = function (tp, min, max) {
 	$('#numericinput').keypress(function (event) {
 		var inputCode = event.which;
 		var currentValue = $(this).val();
-		
+
 		//If the value isn't empty
 		if (currentValue.length > 0) {
 			//Get the float value, even if we're not using floats this will be ok
@@ -124,6 +112,7 @@ unitConverter.handleInput = function (tp, min, max) {
 		}
 
 		if (inputCode > 0 && (inputCode < 48 || inputCode > 57)) {
+
 			// Conditions for a period (decimal point)
 			if (inputCode == 46) {
 
@@ -155,25 +144,21 @@ unitConverter.handleValues = function (v, fc, tc) {
 	} else {
 		r = 0;
 	}
-	$('.result').text(unitConverter.numberWithSpaces(r));
+	$('.result').text(r);
 	unitConverter.fitNumbers('.result');
 };
 
 unitConverter.getRates = function (caller) {
+	console.log('Hi');
 	unitConverter.temp = {};
-	$.getJSON(
-	'https://api.fixer.io/latest', function (data) {
+	$.getJSON('https://api.fixer.io/latest', function (data) {
+
 		unitConverter.temp = [data.rates, data.base];
-		$('.date').text(unitConverter.monthNames[unitConverter.updated.getMonth()] + ' ' + unitConverter.updated.getDate() + ' ' + unitConverter.updated.getHours() + ':' + (parseInt(unitConverter.updated.getMinutes()) < 10 ? '0'+unitConverter.updated.getMinutes() : unitConverter.updated.getMinutes())); //show the actual date for rates
 		caller(unitConverter.temp);
 	}).fail(function () {
 		unitConverter.handleErrors('1');
 	});
 };
-
- unitConverter.numberWithSpaces = function (x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '\u0020');
-}
 
 unitConverter.fitNumbers = function (element) {
 	var w = $(element).width();
